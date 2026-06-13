@@ -216,3 +216,36 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ========== 项目自定义：数据与模型 ==========
+# 数据集与中间数据产物
+/data/raw/
+/data/processed/*.npy
+/data/processed/*.pkl
+/data/processed/*.csv
+/data/synthetic/
+
+# 数据集压缩包
+*.zip
+*.tar.gz
+*.rar
+
+# 模型权重与实验结果
+/results/clustering_models/*.pkl
+/results/clustering_models/*.joblib
+/results/reports/*.csv
+/results/logs/
+
+# 通用日志文件
+*.log
+
+# Windows 系统缓存
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# 本地私有配置
+config_local.yaml
+local_config.py
+*.local
