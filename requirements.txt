@@ -14,6 +14,10 @@ seaborn==0.12.2
 tqdm==4.65.0
 joblib==1.2.0
 
+# Web 服务（新增：app.py 接口依赖）
+fastapi==0.109.2
+uvicorn==0.27.1
+
 # 开发环境
 jupyter==1.0.0
 ipython==8.12.2
