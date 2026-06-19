@@ -3,6 +3,19 @@ from tkinter import ttk, messagebox
 import numpy as np
 import matplotlib
 matplotlib.use('TkAgg')
+
+# ===================== 新增：Matplotlib 中文全局配置 =====================
+# 按优先级匹配系统自带中文字体，Windows优先微软雅黑，mac优先黑体，Linux优先文泉驿
+matplotlib.rcParams['font.sans-serif'] = [
+    'Microsoft YaHei',  # Windows 微软雅黑
+    'SimHei',           # Windows 黑体
+    'PingFang SC',      # macOS 苹方
+    'Arial Unicode MS', # macOS 系统黑体
+    'WenQuanYi Micro Hei' # Linux 文泉驿微米黑
+]
+matplotlib.rcParams['axes.unicode_minus'] = False  # 解决负号显示为方块的问题
+# ========================================================================
+
 from matplotlib.figure import Figure
 from matplotlib.patches import Circle
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
@@ -15,6 +28,17 @@ class TrajectoryDetectorApp(tk.Tk):
         self.title("ATC商场行人轨迹异常检测系统")
         self.geometry("1280x850")
         self.resizable(True, True)
+
+        # ===================== 新增：Tkinter 控件全局中文字体 =====================
+        style = ttk.Style(self)
+        # 统一所有ttk控件的字体为微软雅黑，确保按钮、标签、单选框中文正常
+        style.configure('.', font=('微软雅黑', 10))
+        style.configure('TLabel', font=('微软雅黑', 10))
+        style.configure('TButton', font=('微软雅黑', 10))
+        style.configure('TRadiobutton', font=('微软雅黑', 10))
+        style.configure('Treeview', font=('微软雅黑', 9))
+        style.configure('Treeview.Heading', font=('微软雅黑', 10, 'bold'))
+        # ========================================================================
 
         # ========== 1. 初始化检测器与配置 ==========
         self.detector = TrajectoryAnomalyDetector(model_dir='../data/processed/')
